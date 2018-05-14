@@ -2,7 +2,9 @@
 
 This is my new project idea. I realized I was struggling with Django, so I decided to make a last-minute change and create a video game.
 
-Sources are currently in the python file.
+The game is a top-down tile-based shooter boss battle. Tiles include floor, wall, water, and bomb, though they are not programmed yet.
+
+Sources are currently in the python file and below.
 
 # Progress Report
 
