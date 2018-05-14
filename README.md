@@ -17,3 +17,5 @@ Sources are currently in the python file.
 (May 3) Realized I was struggling with Django and was making literally no progress, so I just changed the project. I think Django isn't the right program for what I wanted to do (which probably would have been easier on HTML)
 
 (May 11) I have committed to making a top-down shooter in the vein of "Realm of the Mad God" or something like that. Since I don't have a lot of time left, I need to allocate time this weekend and before the presentation next week. So far I have the map assets (look in the "topdown" folder).
+
+(May 13) I managed to get somewhat far, as I have created a world and added sprites for a player and a boss. However, I couldn't make the player move. The sprites were created using classes.
