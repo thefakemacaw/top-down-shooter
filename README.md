@@ -24,7 +24,7 @@ Sources are currently in the python file and below.
 
 (May 13) I managed to get somewhat far, as I have created a world and added sprites for a player and a boss. However, I couldn't make the player move. The sprites were created using classes.
 
-(May 18) I figured out movement by using the Kids Can Code tutorial, and I made the code more organized by following the Kids Can Code tutorial on a tile-based shooter. However, the project is incomplete. I am still missing projectiles, hp bars. Additionally, I hit a hurdle where my boss would not appear, though I ran out of time to resolve the issue. So far, the work with the RNG tiles is in the file called "mainNotInUse.py" because at the moment I am not using any of the assets in that file (though if I decide to pick this up again I will try to use RNG tiles in the game, but given the time I have now, it won't work). 
+(May 18) I figured out movement by using the Kids Can Code tutorial, and I made the code more organized by following the Kids Can Code tutorial on a tile-based shooter. However, the project is incomplete. I am still missing projectiles, hp bars. Additionally, I hit a hurdle where my boss would not appear, though I ran out of time to resolve the issue. So far, the work with the RNG tiles is in the file called "mainNotInUse.py" because at the moment I am not using any of the assets in that file (though if I decide to pick this up again I will try to use RNG tiles in the game, but given the time I have now, it won't work). I also just realized that this is now due on the 23rd.
 
 # Works Incorporated
 - UsingPython.com: http://usingpython.com/pygame/
