@@ -2,7 +2,9 @@
 
 This is my new project idea. I realized I was struggling with Django, so I decided to make a last-minute change and create a video game.
 
-The game is a top-down tile-based shooter boss battle. Tiles include floor, wall, water, and bomb, though they are not programmed yet.
+The game is a top-down tile-based shooter boss battle. One of the goals that I set for myself was to use an RNG tile base, though given the amount of time I had left (about a week due to switching projects late), I did not incorporate this into the code. I followed tutorials mostly, and attempted to combine several tutorials, which nearly worked, except for movement.
+
+My initial project was a meditation app; however, I realized a bit too late that Django probably was not best for displaying a moving image, and for having buttons (in hindsight, this project idea would have worked much better in HTML). That is why I changed to a pygame project.
 
 Sources are currently in the python file and below.
 
@@ -22,7 +24,15 @@ Sources are currently in the python file and below.
 
 (May 13) I managed to get somewhat far, as I have created a world and added sprites for a player and a boss. However, I couldn't make the player move. The sprites were created using classes.
 
+(May 18) I figured out movement by using the Kids Can Code tutorial, and I made the code more organized by following the Kids Can Code tutorial on a tile-based shooter. However, the project is incomplete. I am still missing projectiles, hp bars. Additionally, I hit a hurdle where my boss would not appear, though I ran out of time to resolve the issue. So far, the work with the RNG tiles is in the file called "mainNotInUse.py" because at the moment I am not using any of the assets in that file (though if I decide to pick this up again I will try to use RNG tiles in the game, but given the time I have now, it won't work). 
+
 # Works Incorporated
 - UsingPython.com: http://usingpython.com/pygame/
 - Seth Kenlon's game tutorial: https://opensource.com/article/17/12/game-python-add-a-player and https://opensource.com/article/17/12/game-python-moving-player
-- Kids Can Code Youtube channel (can't find the specific video)
+- Kids Can Code Youtube channel (specifically the tile-based shooter series and game development series): https://www.youtube.com/playlist?list=PLsk-HSGFjnaH5yghzu7PcOzm9NhsW0Urw
+- Sprites from Kenney Topdown Shooter (open source): http://kenney.nl/assets/topdown-shooter
+- "archer.png", "boss.png" from "Realm of the Mad God" (a video game), "floor.png" from this tutorial: http://usingpython.com/pygame-images/, "water.gif" from a Google search
+
+# Works Incorporated in Django project (https://github.com/thefakemacaw/meditationApp)
+- Eric Mathes' "Python Crash Course"
+- DjangoProject tutorial: https://docs.djangoproject.com/en/2.0/intro/tutorial01/
