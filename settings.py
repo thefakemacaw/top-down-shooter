@@ -1,4 +1,5 @@
 #From KidsCanCode: goo.gl/t4rYbL
+#this code determines all the settings for the game, controlling things like colors, tilesize, images, speed, etc
 import pygame
 
 #"all the colors, see the colors, make the colors, feel the colors" -Beck, 2017

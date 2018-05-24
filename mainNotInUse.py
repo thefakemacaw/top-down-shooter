@@ -1,4 +1,5 @@
 #based on code from http://usingpython.com/pygame-images/
+#this code isn't used at the moment because the movement was not working. I decided to follow the KidsCanCode tutorial for a top down shooter instead, so this is my old work. I planned on adding the RNG feature to the game itself, but didn't due to time constraints.
 
 import pygame, sys, os, random
 
@@ -39,35 +40,35 @@ class Player(pygame.sprite.Sprite):
         #controls player movement
         self.x += x
         self.y += y
-    # def handleKeys(self):
-    #     keys = pygame.key.get_pressed()
-    #     steps = 5
-    #     if event.type == pygame.KEYDOWN:
-    #         if keys[ord("w")]:
-    #             self.y += steps
-    #             print("up")
-    #         if keys[ord("a")]:
-    #             self.x -= steps
-    #             print("left")
-    #         if keys[ord("s")]:
-    #             self.y -= steps
-    #             print("down")
-    #         if keys[ord("d")]:
-    #             self.x += steps
-    #             print("right")
-    #     elif event.type == pygame.KEYUP:
-    #         if keys[ord("w")]:
-    #             self.y += steps
-    #             print("stop")
-    #         if keys[ord("a")]:
-    #             self.x -= steps
-    #             print("stop")
-    #         if keys[ord("s")]:
-    #             self.y -= steps
-    #             print("stop")
-    #         if keys[ord("d")]:
-    #             self.x += steps
-    #             print("stop")
+    def handleKeys(self):
+        keys = pygame.key.get_pressed()
+        steps = 5
+        if event.type == pygame.KEYDOWN:
+            if keys[ord("w")]:
+                self.y += steps
+                print("up")
+            if keys[ord("a")]:
+                self.x -= steps
+                print("left")
+            if keys[ord("s")]:
+                self.y -= steps
+                print("down")
+            if keys[ord("d")]:
+                self.x += steps
+                print("right")
+        elif event.type == pygame.KEYUP:
+            if keys[ord("w")]:
+                self.y += steps
+                print("stop")
+            if keys[ord("a")]:
+                self.x -= steps
+                print("stop")
+            if keys[ord("s")]:
+                self.y -= steps
+                print("stop")
+            if keys[ord("d")]:
+                self.x += steps
+                print("stop")
     def update(self):
         #updates sprite position
         self.rectx = self.rect.x + self.x
@@ -91,21 +92,21 @@ class Boss(pygame.sprite.Sprite):
 
 """**************************************game setup****************************************"""
 #dictionary to pair the tiles with a color
-# textures = {
-#     WALL: BLACK,
-#     FLOOR: pygame.image.load(os.path.join("topdown", "floor.png")).convert(),
-#     WATER: BLUE,
-#     BOMB: RED
-# }
+textures = {
+    WALL: BLACK,
+    FLOOR: pygame.image.load(os.path.join("topdown", "floor.png")).convert(),
+    WATER: BLUE,
+    BOMB: RED
+}
 
-#game dimensions
-# TILESIZE = 40
-# MAPWIDTH = 20
-# MAPHEIGHT = 15
+game dimensions
+TILESIZE = 40
+MAPWIDTH = 20
+MAPHEIGHT = 15
 
-# tiles = [WALL, FLOOR, WATER]
+tiles = [WALL, FLOOR, WATER]
 
-# tilemap = [[FLOOR for w in range(MAPWIDTH)] for h in range(MAPHEIGHT)]
+tilemap = [[FLOOR for w in range(MAPWIDTH)] for h in range(MAPHEIGHT)]
 
 #set up display
 pygame.init()
@@ -113,32 +114,32 @@ width = 800
 height = 600
 screen = pygame.display.set_mode((width, height))
 pygame.display.set_caption("Top Down Shooter")
-# DISPLAY = pygame.display.set_mode((MAPWIDTH*TILESIZE, MAPHEIGHT*TILESIZE))
-# DISPLAYBOX = DISPLAY.get_rect()
+DISPLAY = pygame.display.set_mode((MAPWIDTH*TILESIZE, MAPHEIGHT*TILESIZE))
+DISPLAYBOX = DISPLAY.get_rect()
 
 background = pygame.Surface(screen.get_size())
-background.fill(BLACK)
+# background.fill(BLACK)
 
 clock = pygame.time.Clock()
 
 #rng-sus for tiles, looping through each row
-# for rw in range(MAPHEIGHT):
-#     #loops through each column in the row
-#     for cl in range(MAPWIDTH):
-#         #rn-jesus
-#         randomNumber = random.randint(0, 30)
-#         #tile is wall if randomNumber is 0 or 1
-#         if randomNumber == 0 or randomNumber == 1 or randomNumber == 2:
-#             tile = WALL
-#         #tile is water if randomNumber is 2, 3, or 4
-#         elif randomNumber == 3 or randomNumber == 4 or randomNumber == 5:
-#             tile = WATER
-#         elif randomNumber == 6:
-#             tile = BOMB
-#         else:
-#             tile = FLOOR
-#         #sets the position in the tilemap to the chosen tile
-#         tilemap[rw][cl] = tile
+for rw in range(MAPHEIGHT):
+    #loops through each column in the row
+    for cl in range(MAPWIDTH):
+        #rn-jesus
+        randomNumber = random.randint(0, 30)
+        #tile is wall if randomNumber is 0 or 1
+        if randomNumber == 0 or randomNumber == 1 or randomNumber == 2:
+            tile = WALL
+        #tile is water if randomNumber is 2, 3, or 4
+        elif randomNumber == 3 or randomNumber == 4 or randomNumber == 5:
+            tile = WATER
+        elif randomNumber == 6:
+            tile = BOMB
+        else:
+            tile = FLOOR
+        #sets the position in the tilemap to the chosen tile
+        tilemap[rw][cl] = tile
 
 #from Seth Kenlon's tutorial on sprites https://opensource.com/article/17/12/game-python-add-a-player
 #gets the player sprite to appear at (0,0)
@@ -198,11 +199,11 @@ while True:
                 player.control(steps, 0)
                 print("right stop")
     #loops through each row
-    # for row in range(MAPHEIGHT):
-    #     for column in range(MAPWIDTH):
-    #         #draws the tile in its respective position
-    #         DISPLAY.blit(textures[tilemap[row][column]], (column*TILESIZE, row*TILESIZE))
-    #player.handleKeys()
+    for row in range(MAPHEIGHT):
+        for column in range(MAPWIDTH):
+            #draws the tile in its respective position
+            DISPLAY.blit(textures[tilemap[row][column]], (column*TILESIZE, row*TILESIZE))
+    player.handleKeys()
     screen.blit(background, (0, 0))
     player.update()
     boss.update()

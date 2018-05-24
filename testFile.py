@@ -1,4 +1,5 @@
 #from KidsCanCode blog: kidscancode.org/blog/2016/08/pygame_1-1_getting-started/ (currently on 1-4)
+#this file doesn't really do anything at the moment. It's just used to test some stuff.
 import pygame, random, os #import all the libraries
 from settings import *
 

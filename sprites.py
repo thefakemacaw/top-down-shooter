@@ -1,4 +1,5 @@
 #From KidsCanCode
+#all the classes for the sprites are in this file
 import pygame
 from settings import *
 from tilemap import collide_hit_rect
@@ -7,8 +8,10 @@ vec = pygame.math.Vector2 #vectors are used for movement and rotation
 def collide_with_walls(sprite, group, dir):
     #this global function is for collision for all sprites (except walls)
     if dir == "x":
+        #collision on the x-axis
         hits = pygame.sprite.spritecollide(sprite, group, False, collide_hit_rect)
         if hits:
+            #this essentially says "if it hits a wall, make the sprite's position be where it hits the wall." Same for the y-axis.
             if sprite.vel.x > 0:
                 sprite.pos.x = hits[0].rect.left - sprite.hit_rect.width / 2
             if sprite.vel.x < 0:
@@ -16,6 +19,7 @@ def collide_with_walls(sprite, group, dir):
             sprite.vel.x = 0
             sprite.hit_rect.centerx = sprite.pos.x
     if dir == "y":
+        #collision on the y-axis
         hits = pygame.sprite.spritecollide(sprite, group, False, collide_hit_rect)
         if hits:
             if sprite.vel.y > 0:
@@ -28,7 +32,7 @@ def collide_with_walls(sprite, group, dir):
 class Player(pygame.sprite.Sprite):
     #creates the player sprite
     def __init__(self, game, x, y):
-        self.groups = game.all_sprites
+        self.groups = game.all_sprites #puts it into the all_sprites group
         pygame.sprite.Sprite.__init__(self, self.groups)
         self.game = game
         self.image = game.player_img
@@ -61,11 +65,12 @@ class Player(pygame.sprite.Sprite):
     def update(self):
         #update player sprite
         self.get_keys()
-        self.rot = (self.rot + self.rot_speed * self.game.dt) % 360
-        self.image = pygame.transform.rotate(self.game.player_img, self.rot)
+        self.rot = (self.rot + self.rot_speed * self.game.dt) % 360 #player rotation
+        self.image = pygame.transform.rotate(self.game.player_img, self.rot) #player image rotation
         self.rect = self.image.get_rect()
         self.rect.center = self.pos
         self.pos += self.vel * self.game.dt
+        #collisions
         self.hit_rect.centerx = self.pos.x
         collide_with_walls(self, self.game.walls, "x")
         self.hit_rect.centery = self.pos.y
@@ -75,7 +80,7 @@ class Player(pygame.sprite.Sprite):
 class Mob(pygame.sprite.Sprite):
     #creates a class for the boss
     def __init__(self, game, x, y):
-        self.groups = game.all_sprites, game.mobs
+        self.groups = game.all_sprites, game.mobs #puts the mob (boss) into all_sprites and mobs groups
         pygame.sprite.Sprite.__init__(self, self.groups)
         self.game = game
         self.image = game.mob_img
@@ -89,15 +94,16 @@ class Mob(pygame.sprite.Sprite):
         self.rot = 0
     
     def update(self):
-        #makes the mob face the player
-        self.rot = (self.game.player.pos - self.pos).angle_to(vec(1, 0))
-        self.image = pygame.transform.rotate(self.game.mob_img, self.rot)
+        #makes the mob face the player and walk towards the player
+        self.rot = (self.game.player.pos - self.pos).angle_to(vec(1, 0)) #mob rotation
+        self.image = pygame.transform.rotate(self.game.mob_img, self.rot) #mob image rotation
         self.rect = self.image.get_rect()
         self.rect.center = self.pos
         self.acc = vec(MOB_SPEED, 0).rotate(-self.rot) #determines rotational acceleration
         self.acc += self.vel * -1 #"friction" for the mob
         self.vel += self.acc * self.game.dt #determines velocity
         self.pos = self.vel * self.game.dt + 0.5 * self.acc * self.game.dt ** 2 #determines position
+        #collisions
         self.hit_rect.centerx = self.pos.x
         collide_with_walls(self, self.game.walls, "x")
         self.hit_rect.centery = self.pos.y
@@ -114,5 +120,6 @@ class Wall(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.x = x
         self.y = y
+        #makes the wall sprite the size of a tile
         self.rect.x = x * TILESIZE
         self.rect.y = y * TILESIZE

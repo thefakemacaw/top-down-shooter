@@ -1,4 +1,5 @@
 #from KidsCanCode blog: kidscancode.org/blog/2016/08/pygame_1-1_getting-started/
+#this code is the template that I used to write the rest of my code
 import pygame, random #import all the libraries
 
 #supersize me

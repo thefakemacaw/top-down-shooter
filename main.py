@@ -1,4 +1,6 @@
-#from KidsCanCode: goo.gl/oU6pkd
+#from KidsCanCode's Tutorial on a Top Down Shooter: goo.gl/oU6pkd
+#the files "main.py," "settings.py," "sprites.py," and "tilemap.py" are from his tutorial above
+#this file runs the main game loop
 #import libraries
 import pygame
 import sys
@@ -72,13 +74,14 @@ class Game:
         #self.draw_grid()
         for sprite in self.all_sprites:
             self.screen.blit(sprite.image, self.camera.apply(sprite))
-        #pygame.draw.rect(self.screen, WHITE, self.player.hit_rect, 2) #was for seeing the hitbox
+        #pygame.draw.rect(self.screen, WHITE, self.player.hit_rect, 2) #was for seeing the hitbox, unused
         pygame.display.flip()
 
     def events(self):
         #game loop events
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
+                #what happens when you hit the "X" in the top right corner
                 self.quit()
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
